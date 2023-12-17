@@ -8,10 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
 </head>
 <body>
-    <h1>YouTube Video Downloader</h1>
     <form id="downloadForm">
-        <label for="youtube_url">Enter YouTube URL:</label>
-        <input type="text" id="youtube_url" name="youtube_url" required>
+        <input type="text" id="youtube_url" name="youtube_url" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" required>
         <button type="button" onclick="downloadVideo()">Download</button>
     </form>
     <div id="videoContainer"></div>

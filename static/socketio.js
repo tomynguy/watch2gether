@@ -1,4 +1,4 @@
-var socket = io.connect('http://' + document.domain + ':' + location.port);
+var socket = io.connect('http://' + location.hostname + ':' + location.port);
 
 socket.on('video_url', function(data) {
     var videoUrl = data.video_url;
@@ -22,9 +22,7 @@ function downloadVideo() {
         url: '/download',
         data: { 'youtube_url': youtubeUrl },
         success: function(response) {
-            if (response.success) {
-                console('Video download initiated!');
-            } else {
+            if (!response.success) {
                 alert('Error: ' + response.error);
             }
         },
@@ -58,3 +56,8 @@ function syncVideo() {
 
     });
 }
+
+socket.on('delete', function() {
+    $('#syncedVideo').prop('muted', true);
+    $('#syncedVideo').remove();
+});
